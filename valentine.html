@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💘 Be My Valentine? 💘</title>
+    <style>
+        body {
+            background-color: pink;
+            text-align: center;
+            font-family: 'Comic Sans MS', cursive;
+            color: white;
+            font-size: 24px;
+        }
+
+        .hearts {
+            font-size: 50px;
+            animation: float 2s infinite alternate;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="hearts">💕 Will you be my Valentine? 💕</h1>
+
+    <div class="buttons">
+        <button onclick="alert('YAYYYYY!!! 😍🎉')">💖 YES 💖</button>
+        <button onclick="alert('NOOOOO 😭😭😭')">💔 NO 💔</button>
+    </div>
+
+</body>
+</html>
