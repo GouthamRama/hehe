@@ -1,14 +1,15 @@
-/* General Styles */
+/* === ✅ GENERAL STYLES (SCROLLABLE & RESPONSIVE) === */
 body {
     text-align: center;
     background-color: #ffe6e6;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Prevent scrolling */
+    overflow-y: auto; /* ✅ Allows scrolling */
+    height: auto;
 }
 
-/* Game Container (Perfectly Scaled for iPhone 14) */
+/* ✅ GAME CONTAINER (Perfectly Scaled) */
 #game-container {
     width: 90vw;
     height: 90vw;
@@ -24,7 +25,7 @@ body {
     justify-content: center;
 }
 
-/* Rat (Responsive Size) */
+/* ✅ RAT (Responsive Size) */
 #rat {
     position: absolute;
     width: 12vw;
@@ -34,7 +35,7 @@ body {
     transition: all 0.1s ease-out;
 }
 
-/* Flowers (Same Responsive Scaling) */
+/* ✅ FLOWERS */
 #flower {
     position: absolute;
     width: 10vw;
@@ -43,33 +44,53 @@ body {
     max-height: 40px;
 }
 
-/* Message Display */
+/* ✅ MESSAGE DISPLAY */
 #message {
     font-size: 5vw;
     font-weight: bold;
     color: red;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-/* Score Display */
+/* ✅ SCORE DISPLAY */
 #score {
     font-size: 4vw;
     font-weight: bold;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-/* Next Button */
+/* ✅ NEXT BUTTON - FIXED CENTER */
 #next-button {
     display: none;
-    margin-top: 20px;
-    padding: 12px 24px;
-    font-size: 5vw;
+    padding: 15px 30px;
+    font-size: 6vw;
     background-color: #ff4d4d;
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 15px;
+    
+    /* ✅ Centering Trick */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    /* ✅ Ensures It's Always Visible */
+    z-index: 999;
+    
+    /* ✅ Mobile Optimization */
+    max-width: 80%;
+    text-align: center;
 }
 
-/* Mobile-Friendly Controls */
+/* ✅ MOBILE-FRIENDLY CONTROLS */
 #controls {
     display: flex;
     justify-content: center;
@@ -77,7 +98,7 @@ body {
     margin-top: 10px;
 }
 
-/* Bigger Buttons for Mobile */
+/* ✅ BIGGER BUTTONS FOR MOBILE */
 #controls button {
     font-size: 7vw;
     padding: 15px;
@@ -90,53 +111,151 @@ body {
     height: 15vw;
 }
 
-/* Button Tap Effect */
+/* ✅ BUTTON TAP EFFECT */
 #controls button:active {
     background-color: #cc0000;
 }
 
-/* Scurry Animation */
-.scurry {
-    transform: scale(1.05);
+/* === ✅ RAT MOVEMENT (SCURRY ANIMATION) === */
+@keyframes scurry {
+    0% { transform: translate(0px, 0px); }
+    25% { transform: translate(-2px, 2px); }
+    50% { transform: translate(2px, -2px); }
+    75% { transform: translate(-2px, -2px); }
+    100% { transform: translate(2px, 2px); }
 }
 
-/* === FINAL VALENTINE PAGE STYLES === */
+/* ✅ APPLY SCURRY ANIMATION */
+.scurry {
+    animation: scurry 0.1s linear infinite;
+}
+
+/* === ❤️ FINAL VALENTINE PAGE STYLES === */
 .valentine-body {
-    background-color: pink;
+    background: url('sparkling.gif') no-repeat center center fixed;
+    background-size: cover;
     text-align: center;
     font-family: 'Comic Sans MS', cursive;
     color: white;
     font-size: 5vw;
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Floating Hearts */
+/* ✅ FLOATING HEARTS */
 .hearts {
     font-size: 8vw;
-    animation: float 2s infinite alternate;
+    animation: float 2s infinite alternate ease-in-out;
+    position: absolute;
+    color: red;
+    opacity: 0.8;
 }
 
 @keyframes float {
     0% { transform: translateY(0); }
-    100% { transform: translateY(-10px); }
+    100% { transform: translateY(-15px); }
 }
 
-/* Valentine Buttons */
-.valentine-buttons {
-    margin-top: 20px;
-}
-
-/* Big Valentine Buttons */
-.valentine-buttons button {
+/* ✅ BLING GLITTER EFFECT */
+.bling {
     font-size: 6vw;
-    padding: 12px 24px;
+    position: absolute;
+    animation: sparkle 1s infinite alternate;
+}
+
+@keyframes sparkle {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0.5; transform: scale(1.2); }
+}
+
+/* ✅ PIXEL LOVE BORDER */
+.valentine-container {
+    border: 5px solid #ff66b2;
+    padding: 10px;
+    background: rgba(255, 182, 193, 0.7);
+    box-shadow: 0px 0px 20px 5px pink;
+    max-width: 85%;
+    margin: auto;
+    text-align: center;
+    border-radius: 20px;
+}
+
+/* ✅ YES AND NO BUTTONS (SCROLLABLE & VISIBLE) */
+.valentine-buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    position: relative; /* ✅ Makes sure buttons don't disappear */
+    bottom: 0;
+}
+
+/* ✅ YES BUTTON */
+#yes-button {
+    font-size: 5vw;
+    padding: 10px 20px;
     border-radius: 10px;
     background-color: red;
     color: white;
     border: none;
     cursor: pointer;
+    transition: 0.3s ease-in-out;
 }
 
-/* Button Hover */
-.valentine-buttons button:hover {
-    background-color: darkred;
+/* ✅ NO BUTTON - KEEPS SHRINKING */
+/* ✅ NO BUTTON SHRINKS EVERY CLICK */
+#no-button {
+    font-size: 5vw;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: grey;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+
+/* ✅ NO BUTTON SHRINKS EVERY CLICK */
+.no-shrink {
+    font-size: 3vw !important;
+    padding: 5px 10px !important;
+}
+
+/* ✅ YES BUTTON GROWS EVERY CLICK */
+.yes-grow {
+    font-size: 8vw !important;
+    padding: 15px 30px !important;
+}
+
+/* ✅ FIXING BUTTON POSITION (NOW VISIBLE) */
+#yes-button, #no-button {
+    display: inline-block;
+    margin: 10px;
+}
+
+/* ✅ DANCING CAT */
+#dancing-cat {
+    width: 150px;
+    height: auto;
+    margin: 20px auto;
+    display: block;
+    animation: dance 2s infinite alternate;
+}
+
+@keyframes dance {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(5deg); }
+}
+
+/* ✅ FINAL IMAGE (HAPPY.jpeg) */
+.final-image {
+    width: 80%;
+    max-width: 400px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px white;
 }
