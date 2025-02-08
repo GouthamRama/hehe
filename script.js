@@ -16,8 +16,8 @@ const messages = [
     "you are so cool",
     "you are so funny",
     "i appreciate you a lot",
-    "BEARSSS <3",
-    "ok phew"
+    "youre sexy?",
+    "ok phew thought u might not finish it"
 ];
 
 // ✅ Load Sound
@@ -31,6 +31,34 @@ function playScurrySound() {
         scurrySound.play().catch(e => console.error("Sound error:", e));
     }
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    let noButton = document.getElementById("no-button");
+    let yesButton = document.getElementById("yes-button");
+    let message = document.getElementById("valentine-message");
+    let noClickCount = 0; // Track "No" clicks
+
+    noButton.addEventListener("click", function () {
+        noClickCount++;
+
+        if (noClickCount < 5) {
+            let newSize = Math.max(5, parseFloat(window.getComputedStyle(noButton).fontSize) * 0.7);
+            noButton.style.fontSize = `${newSize}px`;
+            noButton.style.padding = `${newSize / 2}px ${newSize}px`; 
+        } else {
+            // 💔 After 5 clicks → Show sad alert & hide buttons
+            alert("🥺 Okay... I understand... 💔");
+            noButton.style.display = "none"; // Hide No button
+            yesButton.style.display = "none"; // Hide Yes button
+        }
+    });
+
+    yesButton.addEventListener("click", function () {
+        alert("YAYYYYY!!! 😍🎉"); // ✅ Show YAYYYY Alert
+        document.body.innerHTML = `<img src="HAPPY.jpeg" class="final-image">`;
+    });
+});
+
 
 // ✅ Position Rat and Flower
 rat.style.left = `${ratX}px`;
@@ -97,6 +125,37 @@ document.addEventListener("keydown", (event) => {
 // ✅ Function to Redirect
 function goToValentinePage() {
     window.location.href = "valentine.html";
+}
+let noClickCount = 0;
+
+function sayYes() {
+    document.body.innerHTML = `
+        <div class="valentine-container">
+            <h1>YAY!! ❤️🐭💘</h1>
+            <p>You're the best, my Valentine! 🎉</p>
+            <img class="final-image" src="HAPPY.jpeg" alt="HAPPY">
+        </div>
+    `;
+}
+
+function shrinkNo() {
+    let noButton = document.getElementById("no-button");
+    let yesButton = document.getElementById("yes-button");
+
+    noClickCount++;
+
+    // Keep shrinking "No" button until it disappears
+    let newSize = 5 - noClickCount;  // Every click reduces the font size
+    if (newSize <= 1) {
+        noButton.style.display = "none"; // Hides button when too small
+    } else {
+        noButton.style.fontSize = newSize + "vw";
+        noButton.style.padding = (newSize / 2) + "px " + (newSize * 2) + "px";
+    }
+
+    // Increase "Yes" button size
+    yesButton.style.fontSize = (5 + noClickCount) + "vw";
+    yesButton.style.padding = (10 + noClickCount * 2) + "px " + (20 + noClickCount * 4) + "px";
 }
 
 // ✅ Initial Flower Placement
