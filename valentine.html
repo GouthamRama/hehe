@@ -3,53 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💘 Be My Valentine? 💘</title>
-    <style>
-        body {
-            background-color: pink;
-            text-align: center;
-            font-family: 'Comic Sans MS', cursive;
-            color: white;
-            font-size: 24px;
-        }
-
-        .hearts {
-            font-size: 50px;
-            animation: float 2s infinite alternate;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-10px); }
-        }
-
-        .buttons {
-            margin-top: 20px;
-        }
-
-        button {
-            font-size: 20px;
-            padding: 10px 20px;
-            border-radius: 10px;
-            background-color: red;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: darkred;
-        }
-    </style>
+    <title>Be My Valentine? ❤️</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="valentine-body">
 
-    <h1 class="hearts">💕 Will you be my Valentine? 💕</h1>
+    <!-- Floating Hearts -->
+    <div class="hearts" style="top: 10%; left: 20%;">❤️</div>
+    <div class="hearts" style="top: 30%; left: 80%;">💖</div>
+    <div class="hearts" style="top: 50%; left: 40%;">💕</div>
+    <div class="hearts" style="top: 70%; left: 60%;">💘</div>
 
-    <div class="buttons">
-        <button onclick="alert('YAYYYYY!!! 😍🎉')">💖 YES 💖</button>
-        <button onclick="alert('NOOOOO 😭😭😭')">💔 NO 💔</button>
+    <div class="valentine-container">
+        <h1>💌 Will You Be My Valentine? 💌</h1>
+
+        <!-- Animated Sparkles -->
+        <div class="bling" style="top: 15%; left: 25%;">✨</div>
+        <div class="bling" style="top: 35%; left: 70%;">✨</div>
+        <div class="bling" style="top: 65%; left: 50%;">✨</div>
+
+        <div class="valentine-buttons">
+            <button id="yes-button" onclick="sayYes()">YES ❤️</button>
+            <button id="no-button" onclick="shrinkNo()">NO 😭</button>
+        </div>
     </div>
 
+    <script src="script.js"></script>
 </body>
 </html>
